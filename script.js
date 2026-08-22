@@ -1,4 +1,5 @@
 const cells = document.querySelectorAll(".cell");
+const turnText = document.querySelector(".turn");
 
 let currentPlayer = "X";
 
@@ -17,5 +18,6 @@ cells.forEach(function(cell) {
             currentPlayer = "X";
         }
 
+        turnText.textContent = `Player ${currentPlayer}'s Turn`;
     });
 });
