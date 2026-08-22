@@ -14,6 +14,26 @@ const winningCombinations = [
     [2, 4, 6]
 ];
 
+function checkWinner() {
+
+    for (let combination of winningCombinations) {
+
+        let a = combination[0];
+        let b = combination[1];
+        let c = combination[2];
+
+        if (
+            cells[a].textContent !== "" &&
+            cells[a].textContent === cells[b].textContent &&
+            cells[a].textContent === cells[c].textContent
+        ) {
+            return cells[a].textContent;
+        }
+    }
+
+    return null;
+}
+
 cells.forEach(function(cell) {
     cell.addEventListener("click", function() {
 
@@ -22,6 +42,13 @@ cells.forEach(function(cell) {
         }
 
         cell.textContent = currentPlayer;
+
+        let winner = checkWinner();
+
+        if (winner) {
+           console.log(`${winner} wins!`);
+           return;
+        }
 
         if (currentPlayer === "X") {
             currentPlayer = "O";
