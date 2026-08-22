@@ -1,2 +1,7 @@
 const cells = document.querySelectorAll(".cell");
-console.log(cells);
+
+cells.forEach(function(cell) {
+    cell.addEventListener("click", function() {
+        console.log("Cell clicked");
+    });
+});
