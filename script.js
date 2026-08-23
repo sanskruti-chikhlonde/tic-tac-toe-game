@@ -1,6 +1,7 @@
 const cells = document.querySelectorAll(".cell");
 const turnText = document.querySelector(".turn");
 const resultText = document.querySelector(".result");
+const restartBtn = document.querySelector(".restart-btn");
 
 let currentPlayer = "X";
 
@@ -76,4 +77,17 @@ cells.forEach(function(cell) {
 
         turnText.textContent = `Player ${currentPlayer}'s Turn`;
     });
+});
+
+restartBtn.addEventListener("click", function() {
+
+    cells.forEach(function(cell) {
+        cell.textContent = "";
+    });
+
+    currentPlayer = "X";
+
+    turnText.textContent = "Player X's Turn";
+    resultText.textContent = "";
+
 });
