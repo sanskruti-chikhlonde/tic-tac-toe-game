@@ -1,5 +1,6 @@
 const cells = document.querySelectorAll(".cell");
 const turnText = document.querySelector(".turn");
+const resultText = document.querySelector(".result");
 
 let currentPlayer = "X";
 
@@ -34,6 +35,16 @@ function checkWinner() {
     return null;
 }
 
+function checkDraw() {
+    for (let cell of cells) {
+        if (cell.textContent === "") {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 cells.forEach(function(cell) {
     cell.addEventListener("click", function() {
 
@@ -46,8 +57,15 @@ cells.forEach(function(cell) {
         let winner = checkWinner();
 
         if (winner) {
-           console.log(`${winner} wins!`);
-           return;
+        resultText.textContent = `Player ${winner} Wins!`;
+        turnText.textContent = "";
+        return;
+        }
+
+        if (checkDraw()) {
+        resultText.textContent = "It's a Draw!";
+        turnText.textContent = "";
+        return;
         }
 
         if (currentPlayer === "X") {
