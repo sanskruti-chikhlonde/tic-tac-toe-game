@@ -4,6 +4,7 @@ const resultText = document.querySelector(".result");
 const restartBtn = document.querySelector(".restart-btn");
 
 let currentPlayer = "X";
+let gameOver = false;
 
 const winningCombinations = [
     [0, 1, 2],
@@ -49,6 +50,10 @@ function checkDraw() {
 cells.forEach(function(cell) {
     cell.addEventListener("click", function() {
 
+        if (gameOver) {
+        return;
+        }
+
         if (cell.textContent !== "") {
          return;
         }
@@ -60,12 +65,14 @@ cells.forEach(function(cell) {
         if (winner) {
         resultText.textContent = `Player ${winner} Wins!`;
         turnText.textContent = "";
+        gameOver = true;
         return;
         }
 
         if (checkDraw()) {
         resultText.textContent = "It's a Draw!";
         turnText.textContent = "";
+        gameOver = true;
         return;
         }
 
@@ -86,7 +93,8 @@ restartBtn.addEventListener("click", function() {
     });
 
     currentPlayer = "X";
-
+    gameOver = false;
+    
     turnText.textContent = "Player X's Turn";
     resultText.textContent = "";
 

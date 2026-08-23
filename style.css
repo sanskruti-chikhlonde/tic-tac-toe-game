@@ -71,3 +71,19 @@ h1 {
 .restart-btn:hover {
     opacity: 0.8;
 }
+
+/* Responsiveness */ 
+@media (max-width: 500px) {
+    .game-board {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+    }
+
+    .cell {
+        font-size: 2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
