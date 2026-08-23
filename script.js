@@ -59,6 +59,7 @@ cells.forEach(function(cell) {
         }
 
         cell.textContent = currentPlayer;
+        cell.classList.add(currentPlayer);
 
         let winner = checkWinner();
 
@@ -90,11 +91,12 @@ restartBtn.addEventListener("click", function() {
 
     cells.forEach(function(cell) {
         cell.textContent = "";
+        cell.classList.remove("X", "O");
     });
 
     currentPlayer = "X";
     gameOver = false;
-    
+
     turnText.textContent = "Player X's Turn";
     resultText.textContent = "";
 
